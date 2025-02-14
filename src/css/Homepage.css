@@ -1,0 +1,203 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: radial-gradient(circle at top, rgb(80, 0, 120) 20%, rgb(30, 0, 40) 50%, rgb(5, 0, 10) 90%);
+    background-size: cover;
+    text-shadow: 0 0 1px #fff, 0 0 1px cyan, 0 0 1px pink;
+    background-attachment: fixed;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.homepageCon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.neG {
+    color: #a6a6a6;
+}
+
+.paragraph {
+    display: flex;
+    justify-content: center;
+    color: red;
+    align-items: center;
+}
+
+.btn-con {
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}
+
+.homepageCon h1 {
+    font-size: 3rem;
+    color: #fff;
+}
+
+.homepageCon p {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.homepageCon button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.homepageCon button:hover {
+    background: rgb(80, 0, 120);
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #333;
+    padding: 0 20px;
+    z-index: 1000;
+}
+
+nav h1 {
+    font-size: 2rem;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center; 
+    margin-right: 50px;
+}
+
+nav ul {
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+nav ul li {
+    margin-right: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    align-items: center;
+    color: #fff;
+}
+
+nav button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background: white;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-bottom: 10px;
+}
+
+nav button:hover {
+    background: rgb(80, 0, 120);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cta-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: white;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.cta-btn:hover {
+    background:rgb(80, 0, 120);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+  }
+
+.nBtn {
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact {
+    display: flex;
+    align-items: flex-end;
+    margin-top: 10px;
+}
+
+.pText {
+    color: #a6a6a6;
+}
+
+.logo {
+    font-size: 20px;
+    color: #fff;
+}
+
+.ai {
+    color: #a6a6a6;
+}
+
+.image-container {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    pointer-events: none;
+}
+
+.side-image {
+    height: 700px;
+    width: 50%;
+    opacity: 0.8;
+}
+
+.left-image {
+    position: absolute;
+    left: 0;
+    mask-image: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+
+.right-image {
+    position: absolute;
+    right: 0;
+    mask-image: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    -webkit-mask-image: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+
+.contact ul li a {
+    display: inline-block;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.contact ul li a:hover {
+    text-shadow:rgb(80, 0, 120) 0 0 1px;
+    color: #55037e;
+    transform: scale(1.05);
+}
