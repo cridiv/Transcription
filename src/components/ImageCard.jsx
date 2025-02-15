@@ -18,18 +18,20 @@ const ImageCard = ({ imageUrl, time }) => {
   };
 
   return (
-    <div className="image-card">
-      {/* Image Wrapper with Gradient Border */}
-      <div className="image-wrapper">
-        <img src={imageUrl} alt="AI Generated" className="image" />
-      </div>
+    <div className="card">
+      <div className="image-card">
+        {/* Image Wrapper with Gradient Border */}
+        <div className="image-wrapper">
+          <img src={imageUrl} alt="AI Generated" className="image" />
+        </div>
 
-      {/* Timestamp */}
-      <p className="time">{time}</p>
+        {/* Timestamp */}
+        <p className="time">{time}</p>
 
-      {/* Download Button */}
-      <div className="download-button" onClick={downloadImage}>
-        <FaDownload />
+        {/* Download Button */}
+        <div className="download-button" onClick={downloadImage}>
+          <FaDownload />
+        </div>
       </div>
     </div>
   );
