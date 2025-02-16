@@ -1,26 +1,11 @@
 import React from "react";
+import Header from "./Header";
 import "../css/Homepage.css";
 
 const Homepage = () => {
   return (
     <div className="homepageCon">
-      <header>
-        <nav>
-          <div className="logo">
-            Grizmo<span className="ai">AI</span>
-          </div>
-          <div className="nav-right">
-            <div className="contact">
-              <ul>
-                <li>
-                  <a href="#">Contact</a>
-                </li>
-              </ul>
-            </div>
-            <button className="cta-btn">Explore</button>
-          </div>
-        </nav>
-      </header>
+      <Header />
       <div className="image-container">
         <img
           src="https://www.shutterstock.com/image-vector/artificial-intelligence-circuit-electric-line-600nw-2465096659.jpg"

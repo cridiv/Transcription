@@ -1,0 +1,46 @@
+.dashboard-container {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .dTopic {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .dMenu {
+    display: flex;
+    margin-bottom: 20px;
+    align-items: flex-start;
+  }
+  
+  .dMenu ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+  }
+  
+  .menu-item {
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: background 0.3s;
+  }
+  
+  .menu-item.active {
+    background-color: purple;
+    color: white;
+  }
+  
+  /* Image Grid Layout */
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
+    gap: 10px; /* Space between cards */
+    justify-content: center;
+    align-items: start;
+    margin-top: 20px;
+  }
+  

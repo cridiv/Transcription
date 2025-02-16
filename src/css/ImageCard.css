@@ -1,85 +1,31 @@
-@property --rotate {
-  syntax: "<angle>";
-  initial-value: 132deg;
-  inherits: false;
-}
-
 .image-card {
-  padding: 0;
-  margin: 0;
-  position: relative;
-  background: none;
+  width: 100%;
+  max-width: 250px; /* Smaller card size */
+  height: 300px;
   border-radius: 12px;
-  overflow: hidden;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid purple;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
-  width: 600px;
-  height: auto;
-  max-width: 500px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  position: relative;
 }
 
 .image-card:hover {
   transform: scale(1.05);
 }
 
+/* Image Container */
 .image-wrapper {
-  position: relative;
   width: 100%;
-  height: 500px;
+  height: 280px; /* Fixed height for images */
   border-radius: 12px;
   overflow: hidden;
+  position: relative;
 }
 
-.image-wrapper::before {
-  content: "";
-  width: 200%;
-  height: 200%;
-  border-radius: 12px;
-  background-image: linear-gradient(
-      var(--rotate),
-      #5ddcff,
-      #3c67e3 43%,
-      #4e00c2
-  );
-  position: absolute;
-  z-index: -1;
-  top: -1%;
-  left: -2%;
-  animation: spin 2.5s linear infinite;
-}
-
-.image-wrapper::after {
-  position: absolute;
-  content: "";
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: -1;
-  height: 100%;
-  width: 100%;
-  margin: 0 auto;
-  transform: scale(0.98);
-  filter: blur(20px);
-  background-image: linear-gradient(
-      var(--rotate),
-      #5ddcff,
-      #3c67e3 43%,
-      #4e00c2
-  );
-  opacity: 1;
-  transition: opacity 0.5s;
-  animation: spin 2.5s linear infinite;
-}
-
-@keyframes spin {
-  0% {
-      --rotate: 0deg;
-  }
-  100% {
-      --rotate: 360deg;
-  }
-}
-
+/* Ensure image fills the card properly */
 .image {
   width: 100%;
   height: 100%;
@@ -87,51 +33,48 @@
   border-radius: 12px;
 }
 
+/* Timestamp styling */
 .time {
-  text-align: center;
-  font-size: 14px;
+  font-size: 12px;
   color: #ccc;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
-.favorite-icon {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 24px;
-  cursor: pointer;
-  transition: 0.3s;
-  z-index: 1;
-}
-
-.favorite-icon:hover {
-  transform: scale(1.2);
-}
-
+/* Download button styling */
 .download-button {
   position: absolute;
-  bottom: 10px;
-  right: 10px;
-  font-size: 18px;
+  bottom: 8px;
+  right: 8px;
+  font-size: 16px;
   cursor: pointer;
   transition: 0.3s;
-  color: black;
-  z-index: 1;
+  color: white;
 }
 
 .download-button:hover {
-  transform: scale(1.1);
   color: purple;
 }
 
-.card {
-  width: 250px;
-  background-color: black;
-  border-radius: 10px;
-  padding: 15px;
-  text-align: center;
-  color: white;
-  border: 2px solid purple;
-  box-shadow: 0 0 10px purple;
-  position: relative;
+/* Gradient Border Effect */
+.image-wrapper::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: linear-gradient(132deg, #5ddcff, #3c67e3 43%, #4e00c2);
+  z-index: -1;
+  top: 0;
+  left: 0;
+  opacity: 0.8;
+  animation: spin 2.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { FaDownload } from "react-icons/fa";
+import { FaDownload, FaHeart } from "react-icons/fa";
 import "../css/ImageCard.css";
 
 const ImageCard = ({ imageUrl, time }) => {
