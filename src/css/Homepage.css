@@ -47,71 +47,12 @@ body {
 
 .homepageCon button {
     padding: 10px 20px;
-    margin-top: 20px;
     cursor: pointer;
     transition: 0.3s;
 }
 
 .homepageCon button:hover {
     background: rgb(80, 0, 120);
-}
-
-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #333;
-    padding: 0 20px;
-    z-index: 1000;
-}
-
-nav h1 {
-    font-size: 2rem;
-}
-
-.nav-right {
-    display: flex;
-    align-items: center; 
-    margin-right: 50px;
-}
-
-nav ul {
-    font-size: 16px;
-    display: flex;
-    justify-content: center;
-    list-style: none;
-}
-
-nav ul li {
-    margin-right: 10px;
-}
-
-nav a {
-    text-decoration: none;
-    font-size: 1.2rem;
-    align-items: center;
-    color: #fff;
-}
-
-nav button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    background: white;
-    color: black;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-    margin-bottom: 10px;
-}
-
-nav button:hover {
-    background: rgb(80, 0, 120);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
 
 .cta-btn {
@@ -189,15 +130,4 @@ nav button:hover {
     right: 0;
     mask-image: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
     -webkit-mask-image: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
-}
-
-.contact ul li a {
-    display: inline-block;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.contact ul li a:hover {
-    text-shadow:rgb(80, 0, 120) 0 0 1px;
-    color: #55037e;
-    transform: scale(1.05);
 }

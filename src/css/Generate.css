@@ -1,0 +1,160 @@
+
+  /* Main container */
+  .gen-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    background: radial-gradient(circle at top, rgb(80, 0, 120) 20%, rgb(30, 0, 40) 50%, rgb(5, 0, 10) 90%);
+    background-size: cover;
+    text-shadow: 0 0 1px #fff, 0 0 1px cyan, 0 0 1px pink;
+    background-attachment: fixed;
+    color: white;
+    font-family: Arial, sans-serif;
+  }
+  
+  .gen-head {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .gen-content {
+    width: 100%;
+    max-width: 1200px; /* Adjust as needed */
+    padding: 20px;
+  }
+  
+  /* Model Cards Layout */
+  .genModel {
+    display: flex;
+    flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
+    justify-content: center; /* Center cards horizontally */
+    gap: 20px; /* Spacing between cards */
+    margin: 20px 0; /* Add margin above/below the cards */
+    width: 100%;
+  }
+  
+  .gen-card {
+    width: 250px; /* Fixed width for each card */
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    border-radius: 12px;
+    padding: 10px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .gen-card:hover {
+    transform: translateY(-5px); /* Add hover effect */
+  }
+
+  .genImg-con {
+    height: 150px; /* Adjust image container height */
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  }
+  
+  .genImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure image fills the container */
+    border-radius: 8px;
+  }
+  
+  .gen-title {
+    margin-top: 10px;
+  font-size: 18px;
+  color: white; /* Ensure text is visible */
+  text-align: center;
+  }
+  
+  /* Prompt Section */
+  .gen-des {
+    width: 100%;
+    max-width: 1200px; /* Match gen-content width */
+    margin-top: 40px;
+    text-align: left;
+  }
+  
+  .gen-des p {
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  
+  .gen-inputs {
+    display: flex;
+    align-items: flex-start; /* Align textarea and button at the top */
+    gap: 10px;
+  }
+  
+  .gen-inputs textarea {
+    flex: 1;
+    min-height: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    resize: vertical; /* Allow vertical resizing */
+  }
+  
+  /* Centered Generate Button */
+  .gen-btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+  }
+  
+  .gen-btn {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  
+  .gen-btn:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+  
+  /* Pop-up Styles */
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .popup-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: black;
+    width: 300px;
+  }
+  
+  .close-btn {
+    background: #ff4747;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }

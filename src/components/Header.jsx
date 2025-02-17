@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "../css/Header.css";
+import Create from "./Create";
 
 const Header = () => {
+  const [showPopup, setShowPopup] = useState(false);
+
   return (
     <header className="header-con">
       <nav>
@@ -16,7 +19,15 @@ const Header = () => {
               </li>
             </ul>
           </div>
-          <button className="cta-btn">Create</button>
+          <div className="pop-upCon">
+            <button
+              className="cta-btn open-popup-btn"
+              onClick={() => setShowPopup(true)}
+            >
+              Create
+            </button>
+            {showPopup && <Create onClose={() => setShowPopup(false)} />}
+          </div>
         </div>
       </nav>
     </header>
