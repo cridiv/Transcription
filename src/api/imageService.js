@@ -1,6 +1,11 @@
-const API_KEY = "your_openai_api_key"; // 🔴 Replace with your OpenAI API Key
+const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
 
-export const fetchImages = async () => {
+export const fetchImages = async (prompt) => {
+  if (!prompt) {
+    console.error("Prompt is required for image generation.");
+    return [];
+  }
+
   try {
     const response = await fetch("https://api.openai.com/v1/images/generations", {
       method: "POST",
@@ -9,8 +14,8 @@ export const fetchImages = async () => {
         Authorization: `Bearer ${API_KEY}`,
       },
       body: JSON.stringify({
-        prompt: "a futuristic city skyline at sunset, cyberpunk style", // 🔴 Change prompt as needed
-        n: 5, // Number of images
+        prompt,
+        n: 3,
         size: "1024x1024",
       }),
     });
@@ -30,3 +35,4 @@ export const fetchImages = async () => {
     return [];
   }
 };
+

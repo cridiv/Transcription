@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import Header from "./Header";
-import ImageCard from "./ImageCard"; // Import ImageCard component
+import ImageCard from "./ImageCard";
 import "../css/Dashboard.css";
 
 const Dashboard = () => {
   const [selectedCategory, setSelectedCategory] = useState("Recent");
 
-  // Sample images for ImageCard rendering
   const images = [
     {
       id: 1,
@@ -62,10 +61,8 @@ const Dashboard = () => {
     <>
       <Header />
       <div className="dashboard-container">
-        {/* Topic Title */}
         <h2 className="dTopic">Explore AI Generated Images</h2>
 
-        {/* Navigation Menu */}
         <div className="dMenu">
           <ul>
             {["Recent", "Popular", "Trending"].map((category) => (
@@ -82,7 +79,6 @@ const Dashboard = () => {
           </ul>
         </div>
 
-        {/* Content Container with Multiple ImageCards */}
         <div className="content-container">
           <div className="image-grid">
             {images.map((img) => (

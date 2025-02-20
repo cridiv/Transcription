@@ -1,0 +1,64 @@
+
+$base-line-height: 40px;
+$blue: #4fc0e8;
+$off-blue: rgba($blue, 0.5);
+$spin-duration: 1s;
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.cont {
+  width: 3%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.speech-to-text {
+  position: relative;
+  .border {
+    width: $base-line-height;
+    height: $base-line-height;
+    border: 2px solid $blue;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+  }
+  &:hover {
+    .border {
+      background-color: rgba(#4fc0e8, 0.2);
+    }
+  }
+  .mic {
+    display: block;
+  }
+  .stop {
+    display: none;
+  }
+
+  &.listen {
+    .mic {
+      display: none;
+    }
+    .stop {
+      display: block;
+    }
+    .border {
+      border: 2px solid $off-blue;
+      border-top-color: $blue;
+      animation: spin $spin-duration infinite linear;
+    }
+  }
+}

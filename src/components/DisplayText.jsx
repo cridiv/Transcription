@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { SpeechContext } from "../context/SpeechContext"; // Import Context
+import { SpeechContext } from "../context/SpeechContext";
 
 function DisplayText() {
   const { speechText } = useContext(SpeechContext);

@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 
-export const SpeechContext = createContext();
+export const SpeechContext = createContext(null);
 
 export const SpeechProvider = ({ children }) => {
   const [speechText, setSpeechText] = useState("");

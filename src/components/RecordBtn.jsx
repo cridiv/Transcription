@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
-import { SpeechContext } from "../context/SpeechContext"; // Import Context
+import { SpeechContext } from "../context/SpeechContext";
 import "../css/RecordBtn.scss";
 
 function RecordBtn() {
   const [isListening, setIsListening] = useState(false);
-  const { setSpeechText } = useContext(SpeechContext); // Use Context
+  const { setSpeechText } = useContext(SpeechContext);
 
   useEffect(() => {
     const SpeechRecognition =
@@ -19,7 +19,7 @@ function RecordBtn() {
       recognition.onresult = (event) => {
         const transcript = event.results[0][0].transcript;
         console.log("Recognized:", transcript);
-        setSpeechText(transcript); // Save speech text
+        setSpeechText(transcript);
       };
 
       recognition.onend = () => setIsListening(false);
