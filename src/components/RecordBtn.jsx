@@ -1,45 +1,67 @@
-import React, { useState, useEffect, useContext } from "react";
-import { SpeechContext } from "../context/SpeechContext";
+import React, { useState, useEffect, useContext, useRef } from "react";
+import { useSpeech } from "../context/SpeechContext";
 import "../css/RecordBtn.scss";
 
 function RecordBtn() {
   const [isListening, setIsListening] = useState(false);
-  const { setSpeechText } = useContext(SpeechContext);
+  const [error, setError] = useState(null);
+  const { setSpeechText } = useSpeech();
+  const recognitionRef = useRef(null);
 
   useEffect(() => {
     const SpeechRecognition =
       window.SpeechRecognition || window.webkitSpeechRecognition;
 
-    if (SpeechRecognition) {
-      const recognition = new SpeechRecognition();
-      recognition.continuous = false;
-      recognition.interimResults = false;
-      recognition.lang = "en-US";
-
-      recognition.onresult = (event) => {
-        const transcript = event.results[0][0].transcript;
-        console.log("Recognized:", transcript);
-        setSpeechText(transcript);
-      };
-
-      recognition.onend = () => setIsListening(false);
-
-      recognition.onerror = (event) => console.error("Error:", event.error);
-
-      window.recognitionInstance = recognition;
-    } else {
-      console.error("Speech recognition not supported in this browser.");
+    if (!SpeechRecognition) {
+      setError("Speech recognition not supported in this browser.");
+      return;
     }
+
+    const recognition = new SpeechRecognition();
+    recognitionRef.current = recognition;
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.lang = "en-US";
+
+    const handleResult = (event) => {
+      const transcript = event.results[0][0].transcript;
+      setSpeechText((prev) => (prev ? `${prev} ${transcript}` : transcript));
+    };
+
+    const handleError = (event) => {
+      setError(event.error);
+      setIsListening(false);
+    };
+
+    recognition.addEventListener("result", handleResult);
+    recognition.addEventListener("error", handleError);
+    recognition.addEventListener("end", () => setIsListening(false));
+
+    return () => {
+      recognition.removeEventListener("result", handleResult);
+      recognition.removeEventListener("error", handleError);
+      recognition.removeEventListener("end", () => setIsListening(false));
+      recognition.abort();
+    };
   }, [setSpeechText]);
 
   const toggleListening = () => {
-    if (window.recognitionInstance) {
-      if (!isListening) {
-        window.recognitionInstance.start();
-      } else {
-        window.recognitionInstance.stop();
+    if (!recognitionRef.current) return;
+
+    if (!isListening) {
+      try {
+        recognitionRef.current.start();
+        setIsListening(true);
+        setError(null);
+      } catch (err) {
+        setError(
+          "Microphone access denied. Please enable microphone permissions."
+        );
+        setIsListening(false);
       }
-      setIsListening((prev) => !prev);
+    } else {
+      recognitionRef.current.stop();
+      setIsListening(false);
     }
   };
 
@@ -48,9 +70,14 @@ function RecordBtn() {
       <div
         className={`speech-to-text ${isListening ? "listen" : ""}`}
         onClick={toggleListening}
+        role="button"
+        aria-label={isListening ? "Stop recording" : "Start recording"}
+        disabled={!!error}
       >
         <div className="border"></div>
-        {isListening ? (
+        {error ? (
+          <div className="error-indicator">!</div>
+        ) : isListening ? (
           <svg className="stop" height="40" width="40">
             <path d="m13 13h14v14h-14z" fill="#00c0ed" fillRule="evenodd" />
           </svg>
@@ -64,6 +91,13 @@ function RecordBtn() {
           </svg>
         )}
       </div>
+
+      {error && (
+        <div className="error-message">
+          {error}
+          <button onClick={() => setError(null)}>Dismiss</button>
+        </div>
+      )}
     </div>
   );
 }

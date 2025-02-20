@@ -1,8 +1,9 @@
-
 $base-line-height: 40px;
 $blue: #4fc0e8;
 $off-blue: rgba($blue, 0.5);
 $spin-duration: 1s;
+$error-color: #ff4444;
+$transition-duration: 0.3s;
 
 @keyframes spin {
   0% {
@@ -13,39 +14,84 @@ $spin-duration: 1s;
   }
 }
 
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .cont {
   width: 3%;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
+  flex-direction: column;
+  position: relative;
 }
 
 .speech-to-text {
   position: relative;
+  width: $base-line-height;
+  height: $base-line-height;
+  
   .border {
-    width: $base-line-height;
-    height: $base-line-height;
+    width: 100%;
+    height: 100%;
     border: 2px solid $blue;
     border-radius: 50%;
     cursor: pointer;
+    transition: all $transition-duration ease;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      width: calc(100% + 10px);
+      height: calc(100% + 10px);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
+
   svg {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     cursor: pointer;
+    width: 60%;
+    height: 60%;
   }
+
   &:hover {
     .border {
-      background-color: rgba(#4fc0e8, 0.2);
+      background-color: rgba($blue, 0.2);
+      transform: scale(1.05);
     }
   }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
   .mic {
     display: block;
+    path {
+      fill: $blue;
+    }
   }
+
   .stop {
     display: none;
+    path {
+      fill: $blue;
+    }
   }
 
   &.listen {
@@ -56,9 +102,96 @@ $spin-duration: 1s;
       display: block;
     }
     .border {
-      border: 2px solid $off-blue;
+      border-color: $off-blue;
       border-top-color: $blue;
       animation: spin $spin-duration infinite linear;
+      
+      &::before {
+        border: 2px solid $blue;
+        animation: pulse 1.5s infinite;
+      }
     }
+  }
+
+  &[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+    
+    .border {
+      border-color: rgba($blue, 0.3);
+    }
+    
+    svg path {
+      fill: rgba($blue, 0.3);
+    }
+  }
+}
+
+.error-message {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: rgba($error-color, 0.1);
+  border: 1px solid $error-color;
+  border-radius: 4px;
+  color: $error-color;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  max-width: 300px;
+  animation: slideIn 0.3s ease-out;
+  z-index: 2;
+
+  button {
+    background: none;
+    border: 1px solid $error-color;
+    color: $error-color;
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all $transition-duration ease;
+
+    &:hover {
+      background: rgba($error-color, 0.1);
+    }
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.4;
+    transform: translate(-50%, -50%) scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0.4;
+    transform: translate(-50%, -50%) scale(0.95);
+  }
+}
+
+@media (max-width: 768px) {
+  .cont {
+    width: 5%;
+  }
+  
+  .speech-to-text {
+    width: 35px;
+    height: 35px;
+    
+    .border::before {
+      width: calc(100% + 8px);
+      height: calc(100% + 8px);
+    }
+  }
+  
+  .error-message {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
   }
 }

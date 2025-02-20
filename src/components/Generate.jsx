@@ -1,8 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import Header from "./Header";
-import { SpeechProvider, SpeechContext } from "../context/SpeechContext";
+import { useSpeech } from "../context/SpeechContext";
 import RecordBtn from "./RecordBtn";
-import DisplayText from "./DisplayText";
 import Loading from "./Loading";
 import { FaDownload } from "react-icons/fa";
 import { fetchImages } from "../api/imageService";
@@ -14,17 +13,13 @@ const Generate = () => {
   const [generatedImage, setGeneratedImage] = useState(null);
   const [inputText, setInputText] = useState("");
 
-  const { speechText } = useContext(SpeechContext);
+  const { speechText } = useSpeech();
 
   useEffect(() => {
     if (speechText) {
-      setInputText(speechText);
+      setInputText((prev) => (prev ? `${prev} ${speechText}` : speechText));
     }
   }, [speechText]);
-
-  const handleChange = (e) => {
-    setInputText(e.target.value);
-  };
 
   const handleGenerate = async () => {
     if (!inputText.trim()) {
@@ -68,7 +63,7 @@ const Generate = () => {
   ];
 
   return (
-    <SpeechProvider>
+    <>
       <div className="gen-container">
         <Header className="head" />
         <div className="gen-content">
@@ -101,10 +96,9 @@ const Generate = () => {
                   rows="4"
                   placeholder="Enter your prompt here"
                   value={inputText}
-                  onChange={handleChange}
-                ></textarea>
-                <DisplayText />
-                <RecordBtn className="record" />
+                  onChange={(e) => setInputText(e.target.value)}
+                />
+                <RecordBtn />
               </div>
             </div>
 
@@ -142,7 +136,7 @@ const Generate = () => {
           </div>
         </div>
       )}
-    </SpeechProvider>
+    </>
   );
 };
 
