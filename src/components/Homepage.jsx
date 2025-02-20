@@ -5,8 +5,8 @@ import "../css/Homepage.css";
 const Homepage = () => {
   return (
     <div className="homepageCon">
-      <Header />
       <div className="image-container">
+        <Header />
         <img
           src="https://www.shutterstock.com/image-vector/artificial-intelligence-circuit-electric-line-600nw-2465096659.jpg"
           alt="Left Side"

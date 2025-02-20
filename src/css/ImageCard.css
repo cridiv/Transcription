@@ -1,6 +1,6 @@
 .image-card {
   width: 100%;
-  max-width: 250px; /* Smaller card size */
+  max-width: 250px;
   height: 300px;
   border-radius: 12px;
   padding: 10px;
@@ -16,16 +16,14 @@
   transform: scale(1.05);
 }
 
-/* Image Container */
 .image-wrapper {
   width: 100%;
-  height: 280px; /* Fixed height for images */
+  height: 280px;
   border-radius: 12px;
   overflow: hidden;
   position: relative;
 }
 
-/* Ensure image fills the card properly */
 .image {
   width: 100%;
   height: 100%;
@@ -33,14 +31,12 @@
   border-radius: 12px;
 }
 
-/* Timestamp styling */
 .time {
   font-size: 12px;
   color: #ccc;
   margin-top: 8px;
 }
 
-/* Download button styling */
 .download-button {
   position: absolute;
   bottom: 8px;
@@ -55,7 +51,6 @@
   color: purple;
 }
 
-/* Gradient Border Effect */
 .image-wrapper::before {
   content: "";
   position: absolute;
@@ -76,5 +71,25 @@
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .image-card {
+    max-width: 200px;
+    height: 260px;
+    padding: 8px;
+  }
+
+  .image-wrapper {
+    height: 240px;
+  }
+
+  .download-button {
+    font-size: 14px;
+  }
+
+  .time {
+    font-size: 10px;
   }
 }

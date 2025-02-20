@@ -9,7 +9,9 @@ const Header = () => {
     <header className="header-con">
       <nav>
         <div className="logo">
-          Grizmo<span className="ai">AI</span>
+          <a href="/">
+            Grizmo<span className="ai">AI</span>
+          </a>
         </div>
         <div className="nav-right">
           <div className="contact">

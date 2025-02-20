@@ -1,21 +1,19 @@
-/* Pop-up overlay background */
 .popup-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6); /* Dark background */
+    background: rgba(0, 0, 0, 0.6);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 1000;
-  }
-  
-  /* Pop-up container */
-  .popup-container {
+}
+
+.popup-container {
     position: relative;
-    background: rgba(255, 255, 255, 0.1); /* Glass effect */
+    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 10px;
@@ -25,16 +23,15 @@
     padding: 10px 40px;
     height: 200px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  }
-  
-  /* Buttons */
-  .button-group {
+}
+
+.button-group {
     display: flex;
     justify-content: center;
     margin-top: 30px;
-  }
-  
-  .btn {
+}
+
+.btn {
     padding: 10px 20px;
     border: none;
     border-radius: 20px;
@@ -42,18 +39,17 @@
     color: white;
     cursor: pointer;
     transition: transform 0.2s ease;
-  }
-  
-  .img-btn {
+}
+
+.img-btn {
     background: linear-gradient(to right, blue, purple);
-  }
-  
-  .btn:hover {
+}
+
+.btn:hover {
     transform: scale(1.05);
-  }
-  
-  /* Close Button */
-  .close-btn {
+}
+
+.close-btn {
     position: absolute;
     top: 10px;
     right: 15px;
@@ -62,12 +58,29 @@
     font-size: 18px;
     color: white;
     cursor: pointer;
-  }
-  
-  .close-btn:hover {
+}
+
+.close-btn:hover {
     color: lightgray;
-  }
-  
-  p {
+}
+
+p {
     font-size: 1.1rem;
-  }
+}
+
+@media (max-width: 480px) {
+    .popup-container {
+        width: 90%;
+        padding: 10px 20px;
+        height: auto;
+    }
+
+    .button-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}

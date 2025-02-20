@@ -3,6 +3,7 @@ import Header from "./Header";
 import { SpeechProvider } from "../context/SpeechContext"; // Import Context Provider
 import RecordBtn from "./RecordBtn";
 import DisplayText from "./DisplayText";
+import Loading from "./Loading";
 import "../css/Generate.css";
 
 const Generate = () => {
@@ -10,10 +11,10 @@ const Generate = () => {
 
   const models = ["Dall-E", "Stable Diffusion", "Midjourney", "Leonardo AI"];
   const src = [
-    "https://i.pinimg.com/736x/de/ae/8c/deae8c4c648d612b07a4b57d4584d708.jpg",
-    "https://cdn-bnofo.nitrocdn.com/YCOqbulOWPTbigaUOflqfvBCmkFuxfWf/assets/images/optimized/rev-cd531fc/www.wepc.com/wp-content/uploads/2023/06/Is-Stable-Diffusion-free-389x.png",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQEHUwG-VxXuV2U_rnT0ZEN0HGsY-1A_3TGA&s",
     "https://dlcdnwebimgs.asus.com/files/media/F6CF59BB-5907-40FB-90D4-C5AC6BA01EC0/v11/img/bg/lg/s3_bg_2.jpg",
+    "https://a.d-cd.net/6f6d3g4l4e-1920.jpg",
+    "https://avatars.dzeninfra.ru/get-zen_doc/4426010/pub_63f2559197c8c1465fd5c59c_63f2591e207f8f08e7cb466a/scale_1200",
+    "https://cdn.digitbin.com/wp-content/uploads/Cat-Leonardo-AI.png",
   ];
 
   const [inputText, setInputText] = useState("");
@@ -38,13 +39,11 @@ const Generate = () => {
 
             <div className="genModel">
               {combined.map((item, index) => (
-                <div key={index} style={{ marginBottom: "20px" }}>
+                <div key={index} className="gen-card">
                   <h3>{item.model}</h3>
-                  <img
-                    src={item.src}
-                    alt={item.model}
-                    style={{ width: "300px", height: "auto" }}
-                  />
+                  <div className="genImg-con">
+                    <img src={item.src} alt={item.model} className="genImg" />
+                  </div>
                 </div>
               ))}
             </div>
@@ -82,7 +81,7 @@ const Generate = () => {
       {showPopup && (
         <div className="popup-overlay">
           <div className="popup-content">
-            <p>Generating your style...</p>
+            <Loading />
             <button className="close-btn" onClick={() => setShowPopup(false)}>
               Close
             </button>
