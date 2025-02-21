@@ -14,8 +14,9 @@ export const fetchImages = async (prompt) => {
         Authorization: `Bearer ${API_KEY}`,
       },
       body: JSON.stringify({
+        model: "dall-e-3",
         prompt,
-        n: 3,
+        n: 1,
         size: "1024x1024",
       }),
     });
